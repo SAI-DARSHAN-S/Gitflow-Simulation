@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "Running pre-commit checks..."
+
+python -m py_compile app.py login.py
+
+if [ $? -ne 0 ]; then
+    echo "Syntax check failed. Commit blocked."
+    exit 1
+fi
+
+echo "All checks passed."
+exit 0
